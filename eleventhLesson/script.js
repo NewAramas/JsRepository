@@ -43,3 +43,23 @@ function transformString(str, el, newEl){
 
 console.log(transformString(`my sUrNaMe is Ivanov`,`SURNAMES`, `name`));
 console.log(transformString(`my naMe is Alex`,`name`, `coolName`));
+
+//-- или второй вариант через replace--
+
+function transformString(str, el, newEl) {
+    var elementExist = false;
+    var string = str.toLowerCase();
+    var start = string.indexOf(el.toLowerCase());
+    if (start !== -1) {
+        elementExist = true;
+        var result = str.replace(new RegExp(el, "ig"), newEl);
+    }
+    if (elementExist) {
+        return result;
+    } else {
+        return 'element ' + el + ' not found in string ' + str;
+    }
+
+}
+console.log(transformString(`my naMe is Alex`, `name`, `coolName`));
+console.log(transformString(`my sUrNaMe is Ivanov`, `SURNAMES`, `name`));
